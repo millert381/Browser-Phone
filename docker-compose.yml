@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  asterisk-browser-phone:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: browser-phone
+    ports:
+      - "5060:5060/udp"
+      - "8089:8089"
+    volumes:
+      - ./Docker/config:/etc/asterisk
+    restart: unless-stopped
